@@ -1,0 +1,36 @@
+{
+  "name": "pokemon-party-weakness-checker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "check-server": "./scripts/check-dev-server.sh",
+    "clean": "rm -rf .next",
+    "dev:clean": "npm run clean && npm run dev",
+    "fix:404": "./scripts/fix-404-errors.sh",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:errors": "playwright test tests/console-errors.spec.ts",
+    "check:errors": "node scripts/check-console-errors.js",
+    "check:auto": "./scripts/auto-check-errors.sh",
+    "check:static": "node scripts/detect-common-errors.js"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^14.0.0",
+    "typescript": "^5.2.2"
+  }
+}
