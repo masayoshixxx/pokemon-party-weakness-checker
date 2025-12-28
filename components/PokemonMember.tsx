@@ -54,16 +54,20 @@ export default function PokemonMember({
   }, [isMenuOpen]);
 
   const handleSuggest = useCallback(() => {
-    if (!pokemon.type1) return;
+    let excludedTypes: Array<{ type1: PokemonType; type2: PokemonType | null }> | undefined;
 
-    const currentType = {
-      type1: pokemon.type1,
-      type2: pokemon.type2,
-    };
+    if (pokemon.type1) {
+      const currentType = {
+        type1: pokemon.type1,
+        type2: pokemon.type2,
+      };
 
-    const excludedTypes = continuousClickState
-      ? [...continuousClickState, currentType]
-      : [currentType];
+      excludedTypes = continuousClickState
+        ? [...continuousClickState, currentType]
+        : [currentType];
+    } else if (continuousClickState) {
+      excludedTypes = continuousClickState;
+    }
 
     const suggestion = suggestMemberType(party, pokemon.id, excludedTypes);
 
