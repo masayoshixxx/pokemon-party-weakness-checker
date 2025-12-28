@@ -345,8 +345,9 @@ html.dark .section-title {
   }
 
   .pokemon-type-select {
-    font-size: 1.125rem;
-    padding: 0.75rem 0.75rem;
+    font-size: 1.1875rem;
+    padding: 0.875rem 1rem;
+    min-width: 140px;
   }
 
   .add-button,
@@ -895,6 +896,19 @@ html.dark .explanation-list {
     font-size: 0.9375rem;
     padding: 0.875rem 0.5rem;
     min-height: 48px;
+  }
+
+  .button-group {
+    margin-top: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .add-button,
+  .suggest-button {
+    flex: 1;
+    min-height: 48px;
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
   }
 
   .remove-button,
