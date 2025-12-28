@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ポケモンパーティ弱点チェッカー',
-  description: 'ポケモンのパーティを入力して、弱点を視覚的に確認できます',
+  title: 'パーティ耐性チェッカー',
+  description: 'ポケモンのパーティを入力して、タイプ耐性を視覚的に確認できます',
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
