@@ -119,6 +119,7 @@ export default function PokemonMember({
             });
           }}
           className="pokemon-type-select"
+          disabled={!pokemon.type1}
         >
           <option value="-">-</option>
           {POKEMON_TYPES.filter((type) => type !== pokemon.type1).map(
