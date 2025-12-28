@@ -40,30 +40,29 @@ function generateTypeCombinations(): TypeCombination[] {
 }
 
 type WeaknessMetrics = {
-  max: number;
-  second: number;
-  third: number;
-  sumOfTopThree: number;
+  min: number;
+  secondMin: number;
+  thirdMin: number;
+  sumOfBottomThree: number;
 };
 
 function evaluateWeakness(weaknesses: Map<PokemonType, { totalValue: number }>): WeaknessMetrics {
-  const sortedValues = Array.from(weaknesses.values())
-    .map((r) => r.totalValue)
-    .sort((a, b) => b - a);
+  const values = Array.from(weaknesses.values()).map((r) => r.totalValue);
+  const sortedAscending = [...values].sort((a, b) => a - b);
 
   return {
-    max: sortedValues[0] || 0,
-    second: sortedValues[1] || 0,
-    third: sortedValues[2] || 0,
-    sumOfTopThree: (sortedValues[0] || 0) + (sortedValues[1] || 0) + (sortedValues[2] || 0),
+    min: sortedAscending[0] || 0,
+    secondMin: sortedAscending[1] || 0,
+    thirdMin: sortedAscending[2] || 0,
+    sumOfBottomThree: (sortedAscending[0] || 0) + (sortedAscending[1] || 0) + (sortedAscending[2] || 0),
   };
 }
 
 function isBetterThan(current: WeaknessMetrics, best: WeaknessMetrics): boolean {
-  if (current.max !== best.max) return current.max < best.max;
-  if (current.second !== best.second) return current.second < best.second;
-  if (current.third !== best.third) return current.third < best.third;
-  return current.sumOfTopThree < best.sumOfTopThree;
+  if (current.min !== best.min) return current.min > best.min;
+  if (current.secondMin !== best.secondMin) return current.secondMin > best.secondMin;
+  if (current.thirdMin !== best.thirdMin) return current.thirdMin > best.thirdMin;
+  return current.sumOfBottomThree > best.sumOfBottomThree;
 }
 
 function filterExcluded(
@@ -89,10 +88,10 @@ export function suggestPokemonType(
 
   let bestCombination: TypeCombination | null = null;
   let bestMetrics: WeaknessMetrics = {
-    max: Infinity,
-    second: Infinity,
-    third: Infinity,
-    sumOfTopThree: Infinity,
+    min: -Infinity,
+    secondMin: -Infinity,
+    thirdMin: -Infinity,
+    sumOfBottomThree: -Infinity,
   };
 
   for (const combination of combinations) {
@@ -152,10 +151,10 @@ export function suggestMemberType(
 
   let bestCombination: TypeCombination | null = null;
   let bestMetrics: WeaknessMetrics = {
-    max: Infinity,
-    second: Infinity,
-    third: Infinity,
-    sumOfTopThree: Infinity,
+    min: -Infinity,
+    secondMin: -Infinity,
+    thirdMin: -Infinity,
+    sumOfBottomThree: -Infinity,
   };
 
   if (shouldEvaluateCurrent) {
