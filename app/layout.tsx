@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'パーティ耐性チェッカー',
+  title: 'ポケモンパーティ耐性チェッカー',
   description: 'ポケモンのパーティを入力して、タイプ耐性を視覚的に確認できます',
   icons: {
     icon: [
