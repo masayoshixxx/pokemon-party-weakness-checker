@@ -14,8 +14,20 @@ function createDefaultPokemon(): Pokemon {
   };
 }
 
+function createEmptyPokemon(): Pokemon {
+  return {
+    id: '2',
+    name: '',
+    type1: null,
+    type2: null,
+  };
+}
+
 export function usePokemonParty() {
-  const [party, setParty] = useState<Pokemon[]>(() => [createDefaultPokemon()]);
+  const [party, setParty] = useState<Pokemon[]>(() => [
+    createDefaultPokemon(),
+    createEmptyPokemon(),
+  ]);
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {

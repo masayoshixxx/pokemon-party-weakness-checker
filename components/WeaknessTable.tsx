@@ -14,6 +14,8 @@ const MIN_VALUE = -10;
 const MAX_VALUE = 10;
 const ZERO_VALUE = 0;
 
+const LONG_TYPE_NAMES: PokemonType[] = ['フェアリー', 'エスパー', 'ゴースト', 'ドラゴン'];
+
 function getColorForValue(value: number): string {
   const clampedValue = Math.max(MIN_VALUE, Math.min(MAX_VALUE, value));
 
@@ -68,7 +70,13 @@ export default function WeaknessTable({ weaknesses }: WeaknessTableProps) {
                 color: textColor,
               }}
             >
-              <div className="weakness-type-name" style={{ color: textColor }}>
+              <div
+                className="weakness-type-name"
+                style={{
+                  color: textColor,
+                  fontSize: LONG_TYPE_NAMES.includes(type) ? '0.8125rem' : '0.9375rem',
+                }}
+              >
                 {type}
               </div>
               <div

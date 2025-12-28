@@ -27,7 +27,6 @@ export default function Home() {
     memberId: string;
     excludedTypes: Array<{ type1: PokemonType; type2: PokemonType | null }>;
   } | null>(null);
-  const [isPartyCollapsed, setIsPartyCollapsed] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
 
   const weaknesses = useMemo(() => calculatePartyWeaknesses(party), [party]);
@@ -98,17 +97,7 @@ export default function Home() {
 
       <div className="main-content">
         <section className="party-section">
-          <button
-            onClick={() => setIsPartyCollapsed(!isPartyCollapsed)}
-            className="section-title-toggle"
-            type="button"
-          >
             <h2 className="section-title">メンバー構成</h2>
-            <span className={`collapse-icon ${isPartyCollapsed ? 'collapsed' : ''}`}>
-              ▼
-            </span>
-          </button>
-          {!isPartyCollapsed && (
             <div className="pokemon-list">
             {party.map((pokemon) => (
               <PokemonMember
@@ -127,8 +116,7 @@ export default function Home() {
               />
             ))}
             </div>
-          )}
-          {!isPartyCollapsed && party.length < 6 && (
+          {party.length < 6 && (
             <div className="button-group">
               <button
                 onClick={() => addMember()}

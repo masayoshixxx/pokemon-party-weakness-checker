@@ -8,9 +8,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
   background-color: #ffffff;
   color: #1a1a1a;
   line-height: 1.6;
@@ -40,13 +38,14 @@ html.dark body {
 @media (min-width: 1024px) {
   .container {
     max-width: 1400px;
-    padding: 3rem 3rem;
+    padding: 2.5rem 3rem;
   }
 }
 
 @media (min-width: 1440px) {
   .container {
-    padding: 3.5rem 4rem;
+    max-width: 1600px;
+    padding: 2.5rem 3rem;
   }
 }
 
@@ -58,7 +57,7 @@ html.dark body {
 
 @media (min-width: 1024px) {
   .header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -91,7 +90,8 @@ html.dark .title {
 
 @media (min-width: 1024px) {
   .title {
-    font-size: 1.375rem;
+    font-size: 1.625rem;
+    letter-spacing: -0.03em;
   }
 }
 
@@ -135,6 +135,28 @@ html.dark .theme-toggle:hover {
 .theme-toggle svg {
   width: 16px;
   height: 16px;
+}
+
+@media (min-width: 1024px) {
+  .theme-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .theme-menu-item svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .theme-menu-item {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
 }
 
 .theme-menu {
@@ -221,7 +243,7 @@ html.dark .theme-menu-item .check {
   .main-content {
     flex-direction: row;
     align-items: flex-start;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 }
 
@@ -252,7 +274,7 @@ html.dark .party-section {
 @media (min-width: 1024px) {
   .party-section {
     margin-bottom: 0;
-    max-width: 520px;
+    max-width: 480px;
     padding: 2rem;
   }
 
@@ -266,25 +288,12 @@ html.dark .party-section {
     border-color: #3a3a3a;
   }
 
-  .section-title-toggle {
-    cursor: default;
-    pointer-events: none;
-  }
-
-  .section-title-toggle:hover {
-    opacity: 1;
-  }
-
-  .collapse-icon {
-    display: none;
-  }
-
   .section-title {
     margin-bottom: 1rem;
   }
 
   .member-menu-container {
-    display: none;
+    display: none !important;
   }
 
   .remove-button,
@@ -292,30 +301,17 @@ html.dark .party-section {
   .search-member-button {
     display: block;
   }
+
+  .pokemon-member-inputs:has(.remove-button) .member-menu-container {
+    display: none !important;
+  }
 }
 
-.section-title-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 1rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-}
-
-.section-title-toggle:hover {
-  opacity: 0.7;
-}
 
 .section-title {
   font-size: 0.9375rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 1rem 0;
   color: #1a1a1a;
   letter-spacing: -0.01em;
   text-align: center;
@@ -323,7 +319,8 @@ html.dark .party-section {
 
 @media (min-width: 1024px) {
   .section-title {
-    font-size: 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -331,20 +328,6 @@ html.dark .section-title {
   color: #e0e0e0;
 }
 
-.collapse-icon {
-  font-size: 0.75rem;
-  color: #666;
-  transition: transform 0.2s ease;
-  display: inline-block;
-}
-
-html.dark .collapse-icon {
-  color: #999;
-}
-
-.collapse-icon.collapsed {
-  transform: rotate(90deg);
-}
 
 .pokemon-list {
   margin-bottom: 0.75rem;
@@ -358,7 +341,33 @@ html.dark .collapse-icon {
 
 @media (min-width: 1024px) {
   .pokemon-member {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .pokemon-type-select {
+    font-size: 1.125rem;
+    padding: 0.75rem 0.75rem;
+  }
+
+  .add-button,
+  .suggest-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .remove-button,
+  .suggest-member-button,
+  .search-member-button {
+    font-size: 1rem;
+  }
+
+  .explanation-toggle {
+    font-size: 1rem;
+  }
+
+  .explanation-text {
+    font-size: 1rem;
+    line-height: 1.8;
   }
 }
 
@@ -380,7 +389,7 @@ html.dark .collapse-icon {
   padding: 0.5rem 0.5rem;
   border: 1px solid #e5e5e5;
   border-radius: 6px;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   background-color: #ffffff;
   color: #1a1a1a;
   cursor: pointer;
@@ -410,7 +419,7 @@ html.dark .pokemon-type-select:focus {
   color: #d32f2f;
   border: 1px solid #ffcdd2;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -443,7 +452,7 @@ html.dark .pokemon-type-select:focus {
   color: #3ea8ff;
   border: 1px solid #90caf9;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -480,7 +489,7 @@ html.dark .suggest-member-button:active {
   color: #757575;
   border: 1px solid #bdbdbd;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
@@ -654,6 +663,13 @@ html.dark .weakness-section {
   letter-spacing: -0.01em;
 }
 
+@media (min-width: 1024px) {
+  .weakness-table-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
+
 html.dark .weakness-table-title {
   color: #e0e0e0;
 }
@@ -662,6 +678,18 @@ html.dark .weakness-table-title {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 0.75rem;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .member-menu-container {
+    display: none !important;
+  }
+
+  .remove-button,
+  .suggest-member-button,
+  .search-member-button {
+    display: block !important;
+  }
 }
 
 @media (min-width: 640px) {
@@ -674,7 +702,7 @@ html.dark .weakness-table-title {
 @media (min-width: 1024px) {
   .weakness-table-grid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 1.125rem;
+    gap: 1rem;
   }
 }
 
@@ -690,6 +718,8 @@ html.dark .weakness-table-title {
   justify-content: center;
   align-items: center;
   cursor: default;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -707,7 +737,7 @@ html.dark .weakness-table-title {
 
 @media (min-width: 1024px) {
   .weakness-cell {
-    min-height: 90px;
+    min-height: 95px;
     padding: 1rem 0.75rem;
     border-radius: 6px;
   }
@@ -720,7 +750,7 @@ html.dark .weakness-table-title {
 }
 
 .weakness-type-name {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.8125rem;
   margin-bottom: 0.375rem;
   color: #1a1a1a;
@@ -728,7 +758,16 @@ html.dark .weakness-table-title {
 
 @media (min-width: 768px) {
   .weakness-type-name {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 1024px) {
+  .weakness-type-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -740,7 +779,13 @@ html.dark .weakness-table-title {
 
 @media (min-width: 768px) {
   .weakness-value {
-    font-size: 0.9375rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .weakness-value {
+    font-size: 1.25rem;
   }
 }
 
@@ -832,7 +877,7 @@ html.dark .explanation-list {
     padding: 1rem;
   }
 
-  .section-title-toggle {
+  .section-title {
     margin-bottom: 0.75rem;
   }
 
@@ -855,13 +900,14 @@ html.dark .explanation-list {
   .remove-button,
   .suggest-member-button,
   .search-member-button {
-    display: none;
+    display: none !important;
   }
 
   .member-menu-container {
     position: relative;
     flex-shrink: 0;
     z-index: 1;
+    display: block !important;
   }
 
   .member-menu-button {
@@ -1025,24 +1071,37 @@ html.dark .explanation-list {
   }
 
   .weakness-table-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.375rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .weakness-cell {
-    min-height: 60px;
-    padding: 0.375rem 0.25rem;
+    min-height: 70px;
+    padding: 0.5rem 0.25rem;
     flex-direction: column;
     gap: 0.125rem;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .weakness-type-name {
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     margin-bottom: 0.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    max-width: 100%;
   }
 
   .weakness-value {
-    font-size: 0.7rem;
+    font-size: 0.9375rem;
+    line-height: 1.2;
   }
 }
 
