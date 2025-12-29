@@ -100,6 +100,10 @@ export default function PokemonMember({
           value={pokemon.type1 || '-'}
           onChange={(e) => {
             const value = e.target.value;
+            // タイプ2が設定されている場合は、タイプ1を「-」に変更できない
+            if (value === '-' && pokemon.type2) {
+              return;
+            }
             const newType1 = value === '-' ? null : (value as PokemonType);
             const newType2 = newType1 && pokemon.type2 === newType1 ? null : pokemon.type2;
             onUpdate(pokemon.id, { type1: newType1, type2: newType2 });
@@ -107,7 +111,7 @@ export default function PokemonMember({
           className="pokemon-type-select"
           required
         >
-          <option value="-">-</option>
+          {!pokemon.type2 && <option value="-">-</option>}
           {POKEMON_TYPES.map((type) => (
             <option key={type} value={type}>
               {type}
