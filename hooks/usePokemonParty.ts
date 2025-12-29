@@ -26,6 +26,7 @@ function createEmptyPokemon(): Pokemon {
 export function usePokemonParty() {
   const [party, setParty] = useState<Pokemon[]>(() => [
     createEmptyPokemon(),
+    { id: '3', name: '', type1: null, type2: null },
   ]);
   const [isInitialized, setIsInitialized] = useState(false);
 
